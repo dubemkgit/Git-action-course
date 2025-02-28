@@ -11,4 +11,14 @@ jobs:
         run: echo "Hello World"
 
 
+  echo-goodby:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print Goodbye
+        run: |
+            echo "I will Fail"
+            exit 1
+      - name: Say Goodbye
+        run: echo "Goodbye"
+
     
