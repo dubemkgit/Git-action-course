@@ -4,9 +4,21 @@ on:
     push:
     workflow_dispatch:
 
+env:
+    env_var1: ${{ MY_VAR }}
+
 jobs:
     echo-data:
         runs-on: ubuntu-latest
         steps:
             - run: |
                 echo "Event name: ${{ github.event_name }}"
+                echo "Ref: ${{ github.Ref }}"
+                echo "SHA ${{ github.SHA }}"
+                echo "Actor ${{ github.Actor }}"
+                echo "Workflow ${{ github.Workflow }}"
+                echo "Run ID ${{ github.run_id }}"
+                echo "Run Number ${{ github.run_name }}"
+
+            - name:  Retrieve Variables
+              run: echo "$env_var1"
