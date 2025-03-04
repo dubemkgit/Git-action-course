@@ -1,0 +1,12 @@
+name: 06 -contexts
+
+on:
+    push:
+    workflow_dispatch:
+
+jobs:
+    echo-data:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                echo "Event name: ${{ github.event_name }}"
