@@ -1,0 +1,25 @@
+name: 07-expressions
+
+on:
+    push:
+    workflow_dispatch: 
+        inputs:
+            debug:
+                type: boolean
+                default: false
+
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: print start-up data
+              if: (inputs.debug == false)
+              run: |
+                echo "${{ github.event_name }}"
+            
+            - name: Print when triggered from main
+              
+              run: | 
+                 echo "${{ github.Ref }}"
+
+        
