@@ -34,7 +34,6 @@ jobs:
 
             - name:  Retrieve Variables
               run: echo "${{ vars.MY_VAR}}"
-                    echo "${{ run_name }}"
 
             - name: Print Env Variables
               env:
