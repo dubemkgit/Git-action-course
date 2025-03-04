@@ -1,7 +1,7 @@
 name: 07-expressions
 
 on:
-    push:
+
     workflow_dispatch: 
         inputs:
             debug:
@@ -12,13 +12,13 @@ jobs:
     echo:
         runs-on: ubuntu-latest
         steps:
-            - name: print start-up data
+            - name: '[debug] print start-up data'
               if: (inputs.debug == false)
               run: |
                 echo "${{ github.event_name }}"
             
             - name: Print when triggered from main
-              if: (inputs.debug == false && github.ref == refs/heads/main )
+              if: (inputs.debug == true && github.ref == 'refs/heads/main' )
               run: | 
                  echo "I was triggered from main"
 
