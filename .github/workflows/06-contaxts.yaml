@@ -46,4 +46,10 @@ jobs:
           - name: Print Env Variables 
             run: |
                 echo "Workflow env: $MY_JOB_VAR"
-                echo "Overwritten env: $MY_OVERWRITTEN_VAR"  
+                echo "Overwritten env: $MY_OVERWRITTEN_VAR"
+    
+    echo-data3:
+        runs-on: ubuntu-latest
+        environment:  statging
+        steps:
+            - run: echo "${{ vars.TARGET_VAR }}"          
