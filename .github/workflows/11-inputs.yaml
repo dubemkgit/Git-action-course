@@ -19,16 +19,27 @@ on:
                     - v1
                     - v2
                     - v3
+                default: v3
+                description: Release from which to build
 
-
-            
+      
             
 
 
 jobs:
-    echo:
+    build:
         runs-on: ubuntu-latest
         steps:
-            - name: Echo vars
+            - name: Build
               run: |
-                echo "Input variable: 
+                echo "Building from tag ${{ inputs.tag }} " 
+
+    deploy:
+        runs-on: ubuntu-latest
+        if: ${{ !inputs.dry-run }}
+        environment: ${{ inputs.target }}
+        steps:
+            - name: Deploy
+              run: "Deploying to ${{ inputs.target }}"
+
+        
