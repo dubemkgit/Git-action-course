@@ -20,10 +20,7 @@ on:
                     - v2
                     - v3
                 default: v3
-                description: Release from which to build
-
-      
-            
+                description: Release from which to build         
 
 
 jobs:
@@ -40,6 +37,6 @@ jobs:
         environment: ${{ inputs.target }}
         steps:
             - name: Deploy
-              run: "Deploying to ${{ inputs.target }}"
+              run: echo "Deploying to ${{ inputs.target }}"
 
         
