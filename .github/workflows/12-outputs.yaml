@@ -10,6 +10,12 @@ on:
                 - success
                 - failure
             default: success
+
+
+   
+          build-status-check:
+            type: string
+            default: success
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -27,7 +33,7 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
       
-        if: ${{ inputs.build-status == 'success' }}"
+        if: ${{ inputs.build-status-check == 'success' }}"
         steps:
           - name: deploy
             run: echo "Deploying to production"
