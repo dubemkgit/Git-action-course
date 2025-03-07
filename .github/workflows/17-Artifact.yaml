@@ -1,0 +1,33 @@
+name: 17 artifact uploaded
+
+on:
+    push: 
+    workflow_dispatch: 
+
+        
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: build my project
+              run: echo "Building project"
+              
+            - name: upload artifact
+              run: |
+               mkdir -p salesforce/folder
+               echo My salesforce for TME sanofi > salesforce/folder/salesforce.txt
+
+            - uses: actions/upload-artifact@v4
+              with:
+                name: salesforceUpload
+                path: salesforce/folder
+
+    deploy: 
+        runs-on: ubuntu-latest
+        steps:
+            - run: mkdir -p path/to/artifact
+            - run: echo hello > path/to/artifact/world.txt
+            - uses: actions/upload-artifact@v4
+              with:
+                name: my-artifact
+                path: path/to/artifact/world.txt
