@@ -1,0 +1,33 @@
+name: 12 - working with output
+
+
+on:
+    workflow_dispatch: 
+        inputs:
+          build-status-in:
+            type: choice
+            options:
+                - success
+                - failure
+            default: success
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        outputs:
+          build-status-out: ${{ steps.build.outputs.status }}
+        steps:
+            - name: Print github output path
+              run: echo "$github_output"
+            - name: Build
+              id: build
+              run: echo "status = ${{ inputs.build-status-in }}" >> "$github_output"
+              
+    deploy:
+        runs-on: ubuntu-latest
+        needs: build
+        if: ${{ needs.build.outputs.build-status == 'suceess' }}"
+        steps:
+          - name: deploy
+            run: echo "Deploying to production"
+            
