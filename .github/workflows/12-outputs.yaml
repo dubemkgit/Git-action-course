@@ -18,15 +18,15 @@ jobs:
           build-status-out: ${{ steps.build.outputs.status }}
         steps:
             - name: Print github output path
-              run: echo "$github_output"
+              run: echo "$GITHUB_OUTPUT"
             - name: Build
               id: build
-              run: echo "status = ${{ inputs.build-status-in }}" >> "$github_output"
+              run: echo "status = ${{ inputs.build-status-in }}" >> "$GITHUB_OUTPUT"
               
     deploy:
         runs-on: ubuntu-latest
         needs: build
-        if: ${{ needs.build.outputs.build-status == 'suceess' }}"
+        if: ${{ needs.build.outputs.build-status == 'success' }}"
         steps:
           - name: deploy
             run: echo "Deploying to production"
