@@ -10,7 +10,6 @@ on:
                 - success
                 - failure
             default: success
-
 jobs:
     build:
         runs-on: ubuntu-latest
