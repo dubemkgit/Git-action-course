@@ -33,5 +33,5 @@ jobs:
           - name: deploy
             run: |
              echo "Deploying to production"
-             echo "${{ inputs.build-status-in }}"
+             echo "${{ inputs.build-status}}"
             
